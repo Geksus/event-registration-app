@@ -12,6 +12,7 @@ const getEvents = (req, res) => {
       return res.status(500).json({ error: err.message });
     }
     res.json({ events: results });
+    console.log("Events fetched successfully", results);
   });
 };
 

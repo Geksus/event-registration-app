@@ -1,7 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import api from "../../api";
 
-const { createSlice } = require("@reduxjs/toolkit");
 const initialState = {
   limit: 10,
   page: 1,
@@ -10,20 +9,24 @@ const initialState = {
 
 export const fetchAllEvents = createAsyncThunk(
   "events/fetchAllEvents",
-  async ({ rejectWithValue }) => {
+  async (_, thunkAPI) => {
     try {
-      const response = await api.get("/");
-      console.log(response);
+      const response = await api.get("/events");
+      return response.data.events;
     } catch (error) {
-      return rejectWithValue(error.message);
+      console.log(error.message);
     }
   },
 );
 
 const events = createSlice({
-  name: events,
+  name: "events",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setEvents: (state, action) => {
+      state.events = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllEvents.fulfilled, (state, action) => {
       state.events = action.payload;
@@ -31,6 +34,7 @@ const events = createSlice({
   },
 });
 
+export const { setEvents } = events.actions;
 export const selectEvents = (state) => state.events;
 
 export default events.reducer;

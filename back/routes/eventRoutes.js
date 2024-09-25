@@ -7,10 +7,10 @@ const {
 } = require("../controllers/eventController");
 
 // get all events
-router.get("/", getEvents);
+router.get("/events", getEvents);
 
 // get event by ID
-router.get("/:id", getEventById);
+router.get("events/:id", getEventById);
 
 //create event
 router.post("/", createEvent);

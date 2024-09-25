@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { getEvents } from "../../../back/controllers/eventController";
+import eventsReducer from "./slices/eventsSlice";
 
 const store = configureStore({
   reducer: {
-    getAllEvents: getEvents(),
+    events: eventsReducer,
   },
 });
 
