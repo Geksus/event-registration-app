@@ -13,6 +13,6 @@ router.get("/events", getEvents);
 router.get("events/:id", getEventById);
 
 //create event
-router.post("/", createEvent);
+router.post("/events", createEvent);
 
 module.exports = router;

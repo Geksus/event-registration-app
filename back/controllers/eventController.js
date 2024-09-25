@@ -12,7 +12,6 @@ const getEvents = (req, res) => {
       return res.status(500).json({ error: err.message });
     }
     res.json({ events: results });
-    console.log("Events fetched successfully", results);
   });
 };
 
@@ -34,7 +33,7 @@ const getEventById = (req, res) => {
 
 // create event
 const createEvent = (req, res) => {
-  const { title, description, event_date, organizer_id } = req.body();
+  const { title, description, event_date, organizer_id } = req.body;
 
   const query =
     "INSERT INTO events (id, title, description, event_date, organizer_id) VALUES (UUID(), ?, ?, ?, ?)";
