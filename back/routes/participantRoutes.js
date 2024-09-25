@@ -6,9 +6,9 @@ const {
 } = require("../controllers/participantController");
 
 // register participant
-router.post("/events/:eventId/register", registerParticipant);
+router.post(":eventId/register", registerParticipant);
 
 // get event participants
-router.get("events/:eventId/participants", getParticipants);
+router.get(":eventId/participants", getParticipants);
 
 module.exports = router;

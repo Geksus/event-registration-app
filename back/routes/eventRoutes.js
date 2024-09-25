@@ -7,12 +7,12 @@ const {
 } = require("../controllers/eventController");
 
 // get all events
-router.get("/events", getEvents);
+router.get("/", getEvents);
 
 // get event by ID
-router.get("/events/:id", getEventById);
+router.get("/:id", getEventById);
 
 //create event
-router.post("/events", createEvent);
+router.post("/", createEvent);
 
 module.exports = router;
