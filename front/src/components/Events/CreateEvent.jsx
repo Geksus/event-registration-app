@@ -81,6 +81,7 @@ export default function CreateEvent() {
                 <Form.Select
                   onChange={(event) => setOrganizer_id(event.target.value)}
                 >
+                  <option value="">--Select organizer--</option>
                   {organizers.map((org, index) => (
                     <option key={index} value={org.id}>
                       {org.name}
