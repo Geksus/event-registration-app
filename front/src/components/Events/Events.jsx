@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import SingleEvent from "./SingleEvent";
 import api from "../../api";
 import { useNavigate } from "react-router-dom";
@@ -65,19 +65,18 @@ export default function Events() {
 
   return (
     <Container>
-      <Row className="p-2 m-2">
-        <Form style={{ width: "20em" }}>
-          <Form.Group>
-            <Form.Label>Sort by: </Form.Label>
-            <Form.Select onChange={(event) => sortEvents(event.target.value)}>
-              <option value="---">---</option>
-              <option value="title">Title</option>
-              <option value="date">Date</option>
-              <option value="organizer">Organizer</option>
-            </Form.Select>
-          </Form.Group>
-        </Form>
+      <Row className="p-2 m-2 d-flex justify-content-between">
+        <Col xs={5} md={4} lg={2}>
+          <Form.Label>Sort by: </Form.Label>
+          <Form.Select onChange={(event) => sortEvents(event.target.value)}>
+            <option value="---">---</option>
+            <option value="title">Title</option>
+            <option value="date">Date</option>
+            <option value="organizer">Organizer</option>
+          </Form.Select>
+        </Col>
       </Row>
+
       {events && events.length > 0 ? (
         <>
           <Row className="p-2 m-2">
