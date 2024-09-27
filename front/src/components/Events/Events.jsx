@@ -86,6 +86,15 @@ export default function Events() {
     }
   };
 
+  const getOrganizerName = (item) => {
+    try {
+      const name = organizers.find((org) => org.id === item.organizer_id).name;
+      return name;
+    } catch (error) {
+      return "";
+    }
+  };
+
   useEffect(() => {
     fetchEvents();
     fetchOrganizers();
@@ -134,9 +143,7 @@ export default function Events() {
                 title={item.title}
                 description={item.description}
                 event_id={item.id}
-                organizer={
-                  organizers.find((org) => org.id === item.organizer_id).name
-                }
+                organizer={getOrganizerName(item)}
                 date={item.event_date}
               />
             ))}

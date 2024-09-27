@@ -61,8 +61,6 @@ export default function ParticipantList() {
   const objectForRendering =
     foundParticipants.length === 0 ? participants : foundParticipants;
 
-  console.log(objectForRendering);
-
   return (
     <Container>
       <Row className="p-2 m-2">
