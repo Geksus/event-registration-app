@@ -20,6 +20,17 @@ export default function RegisterParticipant(props) {
     return [name, email, birthDate, referer].some((item) => item === "");
   };
 
+  const isNameValid = () => {
+    const regex = /^$|^[a-zA-Z ]+$/;
+    return regex.test(name);
+  };
+
+  const isEmailValid = () => {
+    const regex =
+      /^$|^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return regex.test(email);
+  };
+
   const register = async () => {
     const params = {
       full_name: name,
@@ -55,7 +66,11 @@ export default function RegisterParticipant(props) {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 autoFocus
+                isInvalid={!isNameValid()}
               />
+              <Form.Control.Feedback type="invalid">
+                Invalid name
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="registerToEventEmail">
               <Form.Label>Email:</Form.Label>
@@ -63,7 +78,11 @@ export default function RegisterParticipant(props) {
                 type="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                isInvalid={!isEmailValid()}
               />
+              <Form.Control.Feedback type="invalid">
+                Invalid email
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="registerToEventDate">
               <Form.Label>Birth date:</Form.Label>

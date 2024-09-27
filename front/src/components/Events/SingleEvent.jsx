@@ -10,6 +10,8 @@ export default function SingleEvent(props) {
       <Card.Header className={"bg-info-subtle"}>{props.title}</Card.Header>
       <Card.Body className="bg-success-subtle">
         <Card.Text>{props.description}</Card.Text>
+        <Card.Text>Organizer: {props.organizer}</Card.Text>
+        <Card.Text>Date: {props.date.split("T")[0]}</Card.Text>
       </Card.Body>
       <Card.Footer className={"d-flex justify-content-between bg-dark-subtle"}>
         <RegisterParticipant event_id={props.event_id} />
