@@ -4,12 +4,7 @@
   "description": "Web-based application for events registration.",
   "main": "index.js",
   "scripts": {
-    "db:setup": "node scripts/dbSetup.js",
-    "install:backend": "cd back/ && npm install",
-    "install:frontend": "cd front/ && npm install",
-    "start:backend": "npm index.js",
-    "start:frontend": "cd frontend/ && npm start",
-    "start": "npm run db:setup && npm run install:backend && npm run install:frontend && npm run start:backend"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
