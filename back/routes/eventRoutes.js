@@ -10,7 +10,7 @@ const {
 router.get("/events", getEvents);
 
 // get event by ID
-router.get("events/:id", getEventById);
+router.get("/events/:event_id", getEventById);
 
 //create event
 router.post("/events", createEvent);

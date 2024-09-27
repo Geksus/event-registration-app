@@ -2,12 +2,8 @@ const db = require("../../db");
 
 // get events per page
 const getEvents = (req, res) => {
-  const limit = parseInt(req.query.limit) || 10;
-  const page = parseInt(req.query.page) || 1;
-  const offset = (page - 1) * limit;
-
-  const query = "SELECT * FROM events LIMIT ?, ?";
-  db.query(query, [offset, limit], (err, results) => {
+  const query = "SELECT * FROM events";
+  db.query(query, (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -17,10 +13,10 @@ const getEvents = (req, res) => {
 
 // get event by id
 const getEventById = (req, res) => {
-  const eventId = req.params.id;
+  const event_id = req.params.event_id;
 
   const query = "SELECT * FROM events WHERE id = ?";
-  db.query(query, [eventId], (err, result) => {
+  db.query(query, [event_id], (err, result) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -47,7 +43,7 @@ const createEvent = (req, res) => {
       }
       res
         .status(201)
-        .json({ message: "Event created", eventId: result.insertId });
+        .json({ message: "Event created", event_id: result.insertId });
     },
   );
 };

@@ -11,7 +11,6 @@ export default function CreateEvent() {
   const [event_date, setEvent_date] = useState("");
   const [organizer_id, setOrganizer_id] = useState("");
   const [organizers, setOrganizers] = useState([]);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,7 +20,7 @@ export default function CreateEvent() {
       setOrganizers(response.data.organizers);
       console.log(response.data.organizers);
     } catch (error) {
-      setErrorMessage(error.message);
+      console.log(error.message);
     }
   };
 
@@ -38,7 +37,7 @@ export default function CreateEvent() {
       await api.post("/events", body);
       navigate("/");
     } catch (error) {
-      setErrorMessage(error.message);
+      console.log(error.message);
     }
   };
 

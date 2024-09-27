@@ -5,10 +5,10 @@ const {
   getParticipants,
 } = require("../controllers/participantController");
 
-// register participant
-router.post(":eventId/register", registerParticipant);
+// Register a participant for an event
+router.post("/:event_id/register", registerParticipant);
 
-// get event participants
-router.get(":eventId/participants", getParticipants);
+// Get participants for an event
+router.get("/:event_id/participants", getParticipants);
 
 module.exports = router;
