@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Col, Container, Form, Pagination, Row } from "react-bootstrap";
 import SingleEvent from "./SingleEvent";
 import api from "../../api";
-import { useNavigate } from "react-router-dom";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -11,7 +11,6 @@ export default function Events() {
   const [error, setError] = useState("");
   const [sortedEvents, setSortedEvents] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [offset, setOffset] = useState((currentPage - 1) * 10);
   const [eventsPerPage] = useState(10);
 
   const navigate = useNavigate();
@@ -103,9 +102,6 @@ export default function Events() {
   if (error) {
     return <p>Error: {error}</p>;
   }
-
-  console.log(organizers);
-  console.log(events);
 
   return (
     <Container>

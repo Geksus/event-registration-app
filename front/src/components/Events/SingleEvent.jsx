@@ -1,7 +1,7 @@
-import Card from "react-bootstrap/Card";
-import { Button } from "react-bootstrap";
-import RegisterParticipant from "../Participants/RegisterParticipant";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import RegisterParticipant from "../Participants/RegisterParticipant";
 
 export default function SingleEvent(props) {
   const navigate = useNavigate();

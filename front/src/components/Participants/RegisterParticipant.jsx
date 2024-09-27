@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import api from "../../api";
 
 export default function RegisterParticipant(props) {
@@ -35,7 +37,7 @@ export default function RegisterParticipant(props) {
     const params = {
       full_name: name,
       email: email,
-      date_of_birth: birthDate,
+      date_of_birth: birthDate?.toISOString().split("T")[0],
       referral_source: referer,
       event_id: props.event_id,
     };
@@ -85,11 +87,17 @@ export default function RegisterParticipant(props) {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="registerToEventDate">
-              <Form.Label>Birth date:</Form.Label>
-              <Form.Control
-                placeholder="YYY-MM-DD"
-                value={birthDate}
-                onChange={(event) => setBirthDate(event.target.value)}
+              <Form.Label>Birth date: </Form.Label>{" "}
+              <DatePicker
+                selected={birthDate}
+                onChange={(date) => setBirthDate(date)}
+                dateFormat="yyyy-MM-dd"
+                isClearable
+                showYearDropdown
+                scrollableYearDropdown
+                yearDropdownItemNumber={100}
+                placeholderText="Select birth date"
+                className="form-control"
               />
             </Form.Group>
             <Form.Group>
